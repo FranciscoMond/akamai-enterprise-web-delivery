@@ -42,7 +42,7 @@
                             }
                         ],
                         "criteriaMustSatisfy": "all",
-                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "templateLink":
                         "comments": ""
                     },
                     {
@@ -105,7 +105,7 @@
                             }
                         ],
                         "criteriaMustSatisfy": "all",
-                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "templateLink":
                         "comments": ""
                     },
                     {
@@ -148,7 +148,7 @@
                             }
                         ],
                         "criteriaMustSatisfy": "all",
-                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "templateLink":
                         "comments": ""
                     },
                     {
@@ -192,7 +192,7 @@
                             }
                         ],
                         "criteriaMustSatisfy": "all",
-                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "templateLink":
                         "comments": ""
                     },
                     {
@@ -278,7 +278,7 @@
                             }
                         ],
                         "criteriaMustSatisfy": "all",
-                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "templateLink":
                         "comments": ""
                     },
                     {
@@ -287,7 +287,7 @@
                         "behaviors": [],
                         "criteria": [],
                         "criteriaMustSatisfy": "all",
-                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "templateLink":
                         "comments": "* Path match needs to be included for dynamic cacheable pages"
                     }
                 ],
@@ -340,7 +340,7 @@
                     }
                 ],
                 "criteriaMustSatisfy": "all",
-                "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                "templateLink":
                 "comments": ""
             },
             {
@@ -362,14 +362,14 @@
                 ],
                 "criteria": [],
                 "criteriaMustSatisfy": "all",
-                "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
-                "comments": "Keep it disabled to prevent Akamai to cache temporary redirections such as HTTP 302 Found (previously Moved Temporarily) and 307 Temporary Redirect redirects returned from origin. Enabling this behavior instructs the edge servers to cache 302 and 307 temporary redirects the same way as they would for 301 and 308 permanent redirects.\nKeep disabled Cache Error responses."
+                "templateLink":
+                "comments":
             }
         ],
         "behaviors": [],
         "criteria": [],
         "criteriaMustSatisfy": "any",
-        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+        "templateLink":
         "comments": ""           
     }
 }
