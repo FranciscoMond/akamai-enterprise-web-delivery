@@ -1,0 +1,72 @@
+{
+    "rules": {
+        "name": "Fonts",
+            "children": [],
+            "behaviors": [
+                {
+                    "name": "origin",
+                    "options": {
+                        "originType": "NET_STORAGE",
+                        "netStorage": {
+                            "cpCode": "000000",
+                            "downloadDomainName": "mysite.download.akamai.com",
+                            "g2oToken": null
+                        }
+                    }
+                },
+                {
+                    "name": "baseDirectory",
+                    "options": {
+                        "value": "/nonprod/"
+                    }
+                },
+                {
+                    "name": "cacheKeyQueryParams",
+                    "options": {
+                        "behavior": "IGNORE_ALL"
+                    }
+                },
+                {
+                    "name": "cacheError",
+                    "options": {
+                        "enabled": true,
+                        "ttl": "90s",
+                        "preserveStale": true
+                    }
+                },
+                {
+                    "name": "caching",
+                    "options": {
+                        "behavior": "MAX_AGE",
+                        "mustRevalidate": false,
+                        "ttl": "365d"
+                    }
+                }
+            ],
+            "criteria": [
+                {
+                    "name": "hostname",
+                    "options": {
+                        "matchOperator": "IS_ONE_OF",
+                        "values": [
+                            "${fonts_rules.hostnames[0]}",
+                            "${fonts_rules.hostnames[1]}"
+                        ]
+                    }
+                },
+                {
+                    "name": "path",
+                    "options": {
+                        "matchOperator": "MATCHES_ONE_OF",
+                        "matchCaseSensitive": false,
+                        "values": [
+                            "/fonts/*"
+                        ],
+                        "normalize": false
+                    }
+                }
+            ],
+            "criteriaMustSatisfy": "all",
+            "comments": ""               
+    }
+}

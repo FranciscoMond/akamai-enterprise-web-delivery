@@ -1,0 +1,23 @@
+{
+    "matchType": "path",
+    "type": "WAF",
+    "name": "POST Page Requests",
+    "description": "Mitigating HTTP flood attacks using POST requests",
+    "averageThreshold": ${threshold.avg},
+    "burstThreshold": ${threshold.burst},
+    "clientIdentifier": "ip",
+    "useXForwardForHeaders": false,
+    "requestType": "ClientRequest",
+    "sameActionOnIpv6": true,
+    "pathMatchType": "Custom",
+    "pathUriPositiveMatch": true,
+    "additionalMatchOptions": [
+      {
+        "positiveMatch": true,
+        "type": "RequestMethodCondition",
+        "values": [
+          "POST"
+        ]
+      }
+    ]
+  }

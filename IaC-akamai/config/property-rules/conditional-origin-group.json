@@ -1,0 +1,109 @@
+{
+    "rules": {
+        "name": "Conditional Origin Group",
+        "children": [
+            {
+                "name": "Conditional Origin Definition",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "origin",
+                        "options": {
+                            "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                            "compress": true,
+                            "enableTrueClientIp": false,
+                            "forwardHostHeader": "ORIGIN_HOSTNAME",
+                            "httpPort": 80,
+                            "originSni": true,
+                            "originType": "CUSTOMER",
+                            "verificationMode": "CUSTOM",
+                            "httpsPort": 443,
+                            "hostname": "${conditional_og.origin-hostname}",
+                            "originCertificate": "",
+                            "ports": "",
+                            "customValidCnValues": [
+                                "{{Origin Hostname}}",
+                                "{{Forward Host Header}}"
+                            ],
+                            "originCertsToHonor": "COMBO",
+                            "standardCertificateAuthorities": [
+                                "akamai-permissive"
+                            ],
+                            "customCertificateAuthorities": [
+                                {
+                                    "subjectCN"     : "${p_certs_r.subject_cn}",
+                                    "sha1Fingerprint": "${p_certs_r.sha_1}",
+                                    "pemEncodedCert": "${p_certs_r.pem}"
+                                },
+                                {
+                                    "subjectCN"     : "${p_certs_i.subject_cn}",
+                                    "sha1Fingerprint": "${p_certs_i.sha_1}",
+                                    "pemEncodedCert": "${p_certs_i.pem}"
+                                }
+                            ],
+                            "customCertificates": [
+                                {
+                                    "subjectCN"     : "${p_certs.subject_cn}",
+                                    "sha1Fingerprint": "${p_certs.sha_1}",
+                                    "pemEncodedCert": "${p_certs.pem}"
+                                }
+                            ],
+                            "ipVersion": "IPV4",
+                            "minTlsVersion": "DYNAMIC"
+                        }
+                    },
+                    {
+                        "name": "cpCode",
+                        "options": {
+                            "value": {
+                                "id" : ${cp_id},
+                                "name": "${cp_name}"
+                            }
+                        }
+                    },
+                    {
+                        "name": "caching",
+                        "options": {
+                            "behavior": "MAX_AGE",
+                            "mustRevalidate": false,
+                            "ttl": "30m"
+                        }
+                    },
+                    {
+                        "name": "downstreamCache",
+                        "options": {
+                            "behavior": "ALLOW",
+                            "allowBehavior": "FROM_VALUE",
+                            "sendHeaders": "CACHE_CONTROL_AND_EXPIRES",
+                            "sendPrivate": false,
+                            "ttl": "5m"
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "cloudletsOrigin",
+                        "options": {
+                            "originId": "${conditional_og.origin-id}"
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            }
+        ],
+        "behaviors": [
+            {
+                "name": "allowCloudletsOrigins",
+                "options": {
+                    "enabled": true,
+                    "honorBaseDirectory": true,
+                    "purgeOriginQueryParameter": "originId"
+                }
+            }
+        ],
+        "criteria": [],
+        "criteriaMustSatisfy": "all",
+        "comments": ""
+    }
+}

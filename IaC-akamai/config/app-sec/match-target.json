@@ -1,0 +1,13 @@
+{
+     "bypassNetworkLists" : [
+      {"id" : "${bypass_nl_id}", "name": "${bypass_nl_name}" }
+      ],
+     "defaultFile"        : "NO_MATCH",
+     "filePaths"          : ["/*"],
+     "hostnames"          : ${match_hostnames},
+     "isNegativePathMatch" : false,
+     "securityPolicy"      : {
+         "policyId" : "${sec_policy_id}"
+      },
+     "type"                : "${match_type}"
+  }

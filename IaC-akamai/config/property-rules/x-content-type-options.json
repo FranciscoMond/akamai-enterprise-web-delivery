@@ -1,0 +1,28 @@
+{
+    "rules": {
+        "name": "X-Content-Type-Options",
+        "children": [],
+        "behaviors": [
+            {
+                "name": "modifyIncomingResponseHeader",
+                "options": {
+                    "action": "DELETE",
+                    "standardDeleteHeaderName": "OTHER",
+                    "customHeaderName": "X-Content-Type-Options"
+                }
+            },
+            {
+                "name": "modifyIncomingResponseHeader",
+                "options": {
+                    "action": "ADD",
+                    "standardAddHeaderName": "OTHER",
+                    "headerValue": "nosniff",
+                    "customHeaderName": "X-Content-Type-Options"
+                }
+            }
+        ],
+        "criteria": [],
+        "criteriaMustSatisfy": "all",
+        "comments": ""           
+    }
+}

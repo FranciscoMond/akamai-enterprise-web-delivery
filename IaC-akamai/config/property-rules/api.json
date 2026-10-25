@@ -1,0 +1,52 @@
+{
+"rules":
+    {
+        "name": "API",
+        "children": [],
+        "behaviors": [
+            {
+                "name": "origin",
+                "options": {
+                    "originType": "CUSTOMER",
+                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                    "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                    "compress": true,
+                    "enableTrueClientIp": true,
+                    "trueClientIpHeader": "True-Client-IP",
+                    "trueClientIpClientSetting": false,
+                    "verificationMode": "CUSTOM",
+                    "originSni": true,
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                    "hostname": "${api_rule.origin-hostname}",
+                    "originCertificate": "",
+                    "ports": "",
+                    "customValidCnValues": [
+                        "{{Origin Hostname}}",
+                        "{{Forward Host Header}}"
+                    ],
+                    "originCertsToHonor": "CUSTOM_CERTIFICATES",
+                    "customCertificates": ${custom_cert},
+                    "ipVersion": "IPV4",
+                    "minTlsVersion": "DYNAMIC"
+                }
+            }
+        ],
+        "criteria": [
+            {
+                
+                
+                "name": "hostname",
+                "options": {
+                    "matchOperator": "IS_ONE_OF",
+                    "values": [
+                        "${api_rule.hostnames[0]}", 
+                        "${api_rule.hostnames[1]}"
+                    ]
+                }
+            }
+        ],
+        "criteriaMustSatisfy": "all",
+        "comments": ""
+    }
+}

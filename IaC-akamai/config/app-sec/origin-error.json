@@ -1,0 +1,38 @@
+{
+    "matchType": "path",
+    "type": "WAF",
+    "name": "Origin Error",
+    "description": "An excessive error rate from the origin could indicate malicious activity by a bot scanning the site or a publishing error. In both cases, this would increase the origin traffic and could potentially destabilize it.",
+    "averageThreshold": ${threshold.avg},
+    "burstThreshold": ${threshold.burst},
+    "clientIdentifier": "ip",
+    "useXForwardForHeaders": false,
+    "requestType": "ForwardResponse",
+    "sameActionOnIpv6": true,
+    "pathMatchType": "Custom",
+    "pathUriPositiveMatch": true,
+    "additionalMatchOptions": [
+      {
+        "positiveMatch": true,
+        "type": "ResponseStatusCondition",
+        "values": [
+          "400",
+          "401",
+          "402",
+          "403",
+          "404",
+          "405",
+          "406",
+          "407",
+          "408",
+          "409",
+          "410",
+          "500",
+          "501",
+          "502",
+          "503",
+          "504"
+        ]
+      }
+    ]
+  }

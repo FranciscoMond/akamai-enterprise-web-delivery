@@ -1,0 +1,375 @@
+{
+    "rules": {
+        "name": "Caching",
+        "children": [
+            {
+                "name": "Caching UI",
+                "children": [
+                    {
+                        "name": "CSS and JavaScript",
+                        "children": [],
+                        "behaviors": [
+                            {
+                                "name": "caching",
+                                "options": {
+                                    "behavior": "MAX_AGE",
+                                    "mustRevalidate": true,
+                                    "ttl": "30d"
+                                }
+                            },
+                            {
+                                "name": "downstreamCache",
+                                "options": {
+                                    "allowBehavior": "FROM_VALUE",
+                                    "behavior": "ALLOW",
+                                    "sendHeaders": "CACHE_CONTROL_AND_EXPIRES",
+                                    "sendPrivate": false,
+                                    "ttl": "1h"
+                                }
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "fileExtension",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "IS_ONE_OF",
+                                    "values": [
+                                        "css",
+                                        "js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "comments": ""
+                    },
+                    {
+                        "name": "Static content",
+                        "children": [],
+                        "behaviors": [
+                            {
+                                "name": "caching",
+                                "options": {
+                                    "behavior": "MAX_AGE",
+                                    "mustRevalidate": true,
+                                    "ttl": "90d"
+                                }
+                            },
+                            {
+                                "name": "downstreamCache",
+                                "options": {
+                                    "allowBehavior": "FROM_VALUE",
+                                    "behavior": "ALLOW",
+                                    "sendHeaders": "CACHE_CONTROL_AND_EXPIRES",
+                                    "sendPrivate": false,
+                                    "ttl": "1h"
+                                }
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "fileExtension",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "IS_ONE_OF",
+                                    "values": [
+                                        "jpg",
+                                        "gif",
+                                        "jpeg",
+                                        "png"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "hostname",
+                                "options": {
+                                    "matchOperator": "IS_NOT_ONE_OF",
+                                    "values": [
+                                        "${caching_rules.hostnames[0]}"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "path",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "DOES_NOT_MATCH_ONE_OF",
+                                    "normalize": false,
+                                    "values": [
+                                        "/api",
+                                        "/api*"
+                                    ]
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "comments": ""
+                    },
+                    {
+                        "name": "Fonts",
+                        "children": [],
+                        "behaviors": [
+                            {
+                                "name": "caching",
+                                "options": {
+                                    "behavior": "MAX_AGE",
+                                    "mustRevalidate": true,
+                                    "ttl": "365d"
+                                }
+                            },
+                            {
+                                "name": "downstreamCache",
+                                "options": {
+                                    "allowBehavior": "FROM_VALUE",
+                                    "behavior": "ALLOW",
+                                    "sendHeaders": "CACHE_CONTROL_AND_EXPIRES",
+                                    "sendPrivate": false,
+                                    "ttl": "1h"
+                                }
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "fileExtension",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "IS_ONE_OF",
+                                    "values": [
+                                        "eot",
+                                        "woff",
+                                        "woff2",
+                                        "otf",
+                                        "ttf"
+                                    ]
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "comments": ""
+                    },
+                    {
+                        "name": "HTML pages",
+                        "children": [],
+                        "behaviors": [
+                            {
+                                "name": "caching",
+                                "options": {
+                                    "behavior": "MAX_AGE",
+                                    "mustRevalidate": true,
+                                    "ttl": "1h"
+                                }
+                            },
+                            {
+                                "name": "downstreamCache",
+                                "options": {
+                                    "allowBehavior": "FROM_VALUE",
+                                    "behavior": "ALLOW",
+                                    "sendHeaders": "CACHE_CONTROL_AND_EXPIRES",
+                                    "sendPrivate": false,
+                                    "ttl": "30m"
+                                }
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "fileExtension",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "IS_ONE_OF",
+                                    "values": [
+                                        "html",
+                                        "htm",
+                                        "php",
+                                        "jsp",
+                                        "aspx",
+                                        "EMPTY_STRING"
+                                    ]
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "comments": ""
+                    },
+                    {
+                        "name": "Other Static Objects",
+                        "children": [],
+                        "behaviors": [
+                            {
+                                "name": "caching",
+                                "options": {
+                                    "behavior": "MAX_AGE",
+                                    "mustRevalidate": true,
+                                    "ttl": "30d"
+                                }
+                            },
+                            {
+                                "name": "downstreamCache",
+                                "options": {
+                                    "allowBehavior": "FROM_VALUE",
+                                    "behavior": "ALLOW",
+                                    "sendHeaders": "CACHE_CONTROL_AND_EXPIRES",
+                                    "sendPrivate": false,
+                                    "ttl": "1h"
+                                }
+                            }
+                        ],
+                        "criteria": [
+                            {
+                                "name": "fileExtension",
+                                "options": {
+                                    "matchCaseSensitive": false,
+                                    "matchOperator": "IS_ONE_OF",
+                                    "values": [
+                                        "aif",
+                                        "aiff",
+                                        "au",
+                                        "avi",
+                                        "bin",
+                                        "bmp",
+                                        "cab",
+                                        "carb",
+                                        "cct",
+                                        "cdf",
+                                        "class",
+                                        "dcr",
+                                        "dtd",
+                                        "exe",
+                                        "flv",
+                                        "gcf",
+                                        "gff",
+                                        "grv",
+                                        "hdml",
+                                        "hqx",
+                                        "ini",
+                                        "mov",
+                                        "mp3",
+                                        "mp4",
+                                        "nc",
+                                        "pct",
+                                        "ppc",
+                                        "pws",
+                                        "swa",
+                                        "swf",
+                                        "txt",
+                                        "vbs",
+                                        "w32",
+                                        "wav",
+                                        "midi",
+                                        "wbmp",
+                                        "wml",
+                                        "wmlc",
+                                        "wmls",
+                                        "wmlsc",
+                                        "xsd",
+                                        "zip",
+                                        "pict",
+                                        "tif",
+                                        "tiff",
+                                        "mid",
+                                        "jxr",
+                                        "jar"
+                                    ]
+                                }
+                            }
+                        ],
+                        "criteriaMustSatisfy": "all",
+                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "comments": ""
+                    },
+                    {
+                        "name": "Dynamic Pages",
+                        "children": [],
+                        "behaviors": [],
+                        "criteria": [],
+                        "criteriaMustSatisfy": "all",
+                        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                        "comments": "* Path match needs to be included for dynamic cacheable pages"
+                    }
+                ],
+                "behaviors": [
+                    {
+                        "name": "removeVary",
+                        "options": {
+                            "enabled": true
+                        }
+                    },
+                    {
+                        "name": "caching",
+                        "options": {
+                            "behavior": "MAX_AGE",
+                            "mustRevalidate": true,
+                            "ttl": "30d"
+                        }
+                    },
+                    {
+                        "name": "cacheKeyQueryParams",
+                        "options": {
+                            "behavior": "INCLUDE_ALL_ALPHABETIZE_ORDER"
+                        }
+                    },
+                    {
+                        "name": "prefreshCache",
+                        "options": {
+                            "enabled": true,
+                            "prefreshval": 90
+                        }
+                    },
+                    {
+                        "name": "downstreamCache",
+                        "options": {
+                            "behavior": "BUST"
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "hostname",
+                        "options": {
+                            "matchOperator": "IS_ONE_OF",
+                            "values": [
+                                "${caching_rules.hostnames[1]}",
+                                "${caching_rules.hostnames[2]}",
+                                "${caching_rules.hostnames[3]}"
+                            ]
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all",
+                "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                "comments": ""
+            },
+            {
+                "name": "Cache HTTP Temporary Redirects and Error Responses",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "cacheRedirect",
+                        "options": {
+                            "enabled": "false"
+                        }
+                    },
+                    {
+                        "name": "cacheError",
+                        "options": {
+                            "enabled": false
+                        }
+                    }
+                ],
+                "criteria": [],
+                "criteriaMustSatisfy": "all",
+                "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+                "comments": "Keep it disabled to prevent Akamai to cache temporary redirections such as HTTP 302 Found (previously Moved Temporarily) and 307 Temporary Redirect redirects returned from origin. Enabling this behavior instructs the edge servers to cache 302 and 307 temporary redirects the same way as they would for 301 and 308 permanent redirects.\nKeep disabled Cache Error responses."
+            }
+        ],
+        "behaviors": [],
+        "criteria": [],
+        "criteriaMustSatisfy": "any",
+        "templateLink": "/platformtoolkit/service/ruletemplate/531322405/1?accountId=F-AC-1474300&gid=255699&ck=25.2.0.1",
+        "comments": ""           
+    }
+}

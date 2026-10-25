@@ -1,0 +1,29 @@
+{
+    "rules": {
+        "name": "CORS",
+        "children": [],
+        "behaviors": [
+            {
+                "name": "corsSupport",
+                "options": {
+                    "enabled": true,
+                    "allowOrigins": "ANY",
+                    "allowCredentials": false,
+                    "allowHeaders": "ANY",
+                    "methods": [
+                        "GET",
+                        "POST",
+                        "DELETE",
+                        "PUT",
+                        "PATCH"
+                    ],
+                    "preflightMaxAge": "86400s",
+                    "exposeHeaders": []
+                }
+            }
+        ],
+        "criteria": [],
+        "criteriaMustSatisfy": "all",
+        "comments": ""           
+    }
+}

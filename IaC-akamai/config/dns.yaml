@@ -1,0 +1,25 @@
+dns_records:
+    - name: "${env}-mydomain.com"
+      type: "AKAMAICDN"
+      ttl: 20
+      target: ["${edge_key}"]
+    - name: "*.${env}-mydomain.com"
+      type: "CNAME"
+      ttl: 300
+      target: ["${edge_key}"] 
+    - name: "api.${env}-mydomain.com"
+      type: "CNAME"
+      ttl: 300
+      target: ["${edge_key}"]
+    - name: "www.${env}-mydomain.com"
+      type: "CNAME"
+      ttl: 300
+      target: ["${edge_key}"]
+    - name: "origin.${env}-mydomain.com"
+      type: "A"
+      ttl: 300
+      target: ["${origin}"]
+    - name: "_dnsauth.${env}-mydomain.com"
+      type: "TXT"
+      ttl: 300
+      target: ["${zone_auth}"]

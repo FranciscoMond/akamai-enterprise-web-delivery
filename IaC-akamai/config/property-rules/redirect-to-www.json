@@ -1,0 +1,69 @@
+{
+    "rules": {
+        "name": "Redirect to www",
+        "children": [
+            {
+                "name": "POST 307",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "redirect",
+                        "options": {
+                            "mobileDefaultChoice": "DEFAULT",
+                            "destinationProtocol": "HTTPS",
+                            "destinationHostname": "OTHER",
+                            "destinationPath": "SAME_AS_REQUEST",
+                            "queryString": "APPEND",
+                            "responseCode": 307,
+                            "destinationHostnameOther": "${redirect-to-www_rule.hostnames[1]}"
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "requestMethod",
+                        "options": {
+                            "matchOperator": "IS",
+                            "value": "POST"
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all",
+                "comments": ""
+            }
+        ],
+        "behaviors": [
+            {
+                "name": "redirect",
+                "options": {
+                    "mobileDefaultChoice": "DEFAULT",
+                    "destinationProtocol": "HTTPS",
+                    "destinationHostname": "OTHER",
+                    "destinationPath": "SAME_AS_REQUEST",
+                    "queryString": "APPEND",
+                    "responseCode": 301,
+                    "destinationHostnameOther": "${redirect-to-www_rule.hostnames[1]}"
+                }
+            }
+        ],
+        "criteria": [
+            {
+                "name": "requestProtocol",
+                "options": {
+                    "value": "HTTPS"
+                }
+            },
+            {
+                "name": "hostname",
+                "options": {
+                    "matchOperator": "IS_ONE_OF",
+                    "values": [
+                        "${redirect-to-www_rule.hostnames[0]}"
+                    ]
+                }
+            }
+        ],
+        "criteriaMustSatisfy": "all",
+        "comments": ""
+    }
+}
