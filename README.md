@@ -36,56 +36,7 @@ The project implemented Akamai caching policies and traffic optimization rules t
 
 ## Project Structure
 
-.
-├── IaC-akamai
-│   ├── appsec.tf
-│   ├── botman.tf
-│   ├── cert.tf
-│   ├── cloudlet.tf
-│   ├── config
-│   │   ├── app-sec
-│   │   │   ├── match-target.json
-│   │   │   ├── origin-error.json
-│   │   │   ├── page-view-requests.json
-│   │   │   ├── post-page-requests.json
-│   │   │   └── pragma-header.json
-│   │   ├── dns.yaml
-│   │   └── property-rules
-│   │       ├── accelerate-delivery.json
-│   │       ├── api.json
-│   │       ├── augment-insights.json
-│   │       ├── caching.json
-│   │       ├── conditional-origin-group.json
-│   │       ├── cors.json
-│   │       ├── fonts.json
-│   │       ├── increase-availability.json
-│   │       ├── last-mile-acceleration.json
-│   │       ├── redirect-to-www.json
-│   │       ├── strengthen-security.json
-│   │       └── x-content-type-options.json
-│   ├── datastreams.tf
-│   ├── dns.tf
-│   ├── locals.tf
-│   ├── main.tf
-│   ├── networklist.tf
-│   ├── outputs.tf
-│   ├── property.tf
-│   ├── provider.tf
-│   ├── rules.tf
-│   └── variables.tf
-├── README.md
-├── akamai_vars
-│   └── deployment
-│       └── stg1
-│           ├── main.tf
-│           ├── outputs.tf
-│           ├── terraform.tfvars
-│           └── variables.tf
-└── assets
-    └── images
-        ├── architecture.png
-        └── performance-chart.png
-
+![Tree](assets/images/tree.png)
 
 ## Architecture
 
